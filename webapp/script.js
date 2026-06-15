@@ -6,8 +6,8 @@ if (tg) {
   tg.ready();
   tg.expand();
   try {
-    tg.setBackgroundColor('#EAF0E6');
-    tg.setHeaderColor('#EAF0E6');
+    tg.setBackgroundColor('#0d0f14');
+    tg.setHeaderColor('#0d0f14');
   } catch (e) { /* older clients */ }
 }
 

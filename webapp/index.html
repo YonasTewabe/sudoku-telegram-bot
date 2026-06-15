@@ -10,7 +10,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -39,7 +39,9 @@
     <!-- Resume banner — shown on load when a saved game exists -->
     <div class="resume-banner" id="resumeBanner" hidden>
       <div class="resume-text">
-        <span class="resume-icon">⏸</span>
+        <span class="resume-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="10" y1="15" x2="10" y2="9"/><line x1="14" y1="15" x2="14" y2="9"/></svg>
+        </span>
         <div>
           <div class="resume-title">Resume game?</div>
           <div class="resume-info" id="resumeInfo"></div>
@@ -66,16 +68,28 @@
 
     <footer class="toolbar">
       <button class="tool-btn" id="notesBtn" aria-pressed="false">
-        <span class="tool-icon">✎</span> <span class="tool-label">Notes</span>
+        <span class="tool-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </span>
+        <span class="tool-label">Notes</span>
       </button>
       <button class="tool-btn" id="hintBtn">
-        <span class="tool-icon">★</span> <span class="tool-label">Hint</span>
+        <span class="tool-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+        </span>
+        <span class="tool-label">Hint</span>
       </button>
       <button class="tool-btn" id="newGameBtn">
-        <span class="tool-icon">↻</span> <span class="tool-label">New game</span>
+        <span class="tool-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+        </span>
+        <span class="tool-label">New game</span>
       </button>
       <button class="tool-btn" id="statsBtn" aria-haspopup="dialog">
-        <span class="tool-icon">📊</span> <span class="tool-label">Stats</span>
+        <span class="tool-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </span>
+        <span class="tool-label">Stats</span>
       </button>
     </footer>
 
