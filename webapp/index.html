@@ -36,6 +36,21 @@
 
     <div class="message" id="message" aria-live="polite"></div>
 
+    <!-- Resume banner — shown on load when a saved game exists -->
+    <div class="resume-banner" id="resumeBanner" hidden>
+      <div class="resume-text">
+        <span class="resume-icon">⏸</span>
+        <div>
+          <div class="resume-title">Resume game?</div>
+          <div class="resume-info" id="resumeInfo"></div>
+        </div>
+      </div>
+      <div class="resume-actions">
+        <button class="resume-btn primary" id="resumeBtn">Resume</button>
+        <button class="resume-btn secondary" id="newGameFromBannerBtn">New game</button>
+      </div>
+    </div>
+
     <section class="numpad" id="numpad" aria-label="Number pad">
       <button class="num-btn" data-num="1">1</button>
       <button class="num-btn" data-num="2">2</button>
