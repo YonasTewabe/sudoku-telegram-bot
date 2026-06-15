@@ -23,7 +23,7 @@
         <span class="timer" id="timer">00:00</span>
         <select id="difficulty" class="difficulty">
           <option value="easy">Easy</option>
-          <option value="medium" selected>Medium</option>
+          <option value="medium">Medium</option>
           <option value="hard">Hard</option>
           <option value="expert">Expert</option>
         </select>
@@ -51,15 +51,143 @@
 
     <footer class="toolbar">
       <button class="tool-btn" id="notesBtn" aria-pressed="false">
-        <span class="tool-icon">✎</span> Notes
+        <span class="tool-icon">✎</span> <span class="tool-label">Notes</span>
       </button>
       <button class="tool-btn" id="hintBtn">
-        <span class="tool-icon">★</span> Hint
+        <span class="tool-icon">★</span> <span class="tool-label">Hint</span>
       </button>
       <button class="tool-btn" id="newGameBtn">
-        <span class="tool-icon">↻</span> New game
+        <span class="tool-icon">↻</span> <span class="tool-label">New game</span>
+      </button>
+      <button class="tool-btn" id="statsBtn" aria-haspopup="dialog">
+        <span class="tool-icon">📊</span> <span class="tool-label">Stats</span>
       </button>
     </footer>
+
+  </div>
+
+  <!-- ===================== Stats sheet ===================== -->
+  <div class="stats-backdrop" id="statsBackdrop" aria-hidden="true"></div>
+
+  <div class="stats-sheet" id="statsSheet" role="dialog" aria-modal="true"
+       aria-label="Your statistics" aria-hidden="true">
+
+    <div class="stats-handle"></div>
+    <div class="stats-header">
+      <h2 class="stats-title">Your Stats</h2>
+      <button class="stats-close" id="statsClose" aria-label="Close stats">✕</button>
+    </div>
+
+    <!-- Per-difficulty cards -->
+    <h3 class="stats-section-title">By Difficulty</h3>
+
+    <!-- Easy -->
+    <div class="diff-card" data-diff="easy">
+      <div class="diff-card-header">
+        <span class="diff-dot easy"></span>
+        <span class="diff-card-name">Easy</span>
+        <span class="diff-card-summary" id="easy-summary">—</span>
+        <span class="diff-card-chevron">›</span>
+      </div>
+      <div class="diff-card-body">
+        <div class="diff-chips">
+          <div class="stat-chip"><span class="stat-value" id="stats-easy-played">—</span><span class="stat-label">Played</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-easy-won">—</span><span class="stat-label">Won</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-easy-abandoned">—</span><span class="stat-label">Abandoned</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-easy-streak">—</span><span class="stat-label">Streak</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-easy-best-streak">—</span><span class="stat-label">Best streak</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-easy-hints">—</span><span class="stat-label">Hints</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-easy-mistakes">—</span><span class="stat-label">Mistakes</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-easy-best">—</span><span class="stat-label">Best time</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-easy-avg">—</span><span class="stat-label">Avg time</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-easy-worst">—</span><span class="stat-label">Worst time</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Medium -->
+    <div class="diff-card" data-diff="medium">
+      <div class="diff-card-header">
+        <span class="diff-dot medium"></span>
+        <span class="diff-card-name">Medium</span>
+        <span class="diff-card-summary" id="medium-summary">—</span>
+        <span class="diff-card-chevron">›</span>
+      </div>
+      <div class="diff-card-body">
+        <div class="diff-chips">
+          <div class="stat-chip"><span class="stat-value" id="stats-medium-played">—</span><span class="stat-label">Played</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-medium-won">—</span><span class="stat-label">Won</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-medium-abandoned">—</span><span class="stat-label">Abandoned</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-medium-streak">—</span><span class="stat-label">Streak</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-medium-best-streak">—</span><span class="stat-label">Best streak</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-medium-hints">—</span><span class="stat-label">Hints</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-medium-mistakes">—</span><span class="stat-label">Mistakes</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-medium-best">—</span><span class="stat-label">Best time</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-medium-avg">—</span><span class="stat-label">Avg time</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-medium-worst">—</span><span class="stat-label">Worst time</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hard -->
+    <div class="diff-card" data-diff="hard">
+      <div class="diff-card-header">
+        <span class="diff-dot hard"></span>
+        <span class="diff-card-name">Hard</span>
+        <span class="diff-card-summary" id="hard-summary">—</span>
+        <span class="diff-card-chevron">›</span>
+      </div>
+      <div class="diff-card-body">
+        <div class="diff-chips">
+          <div class="stat-chip"><span class="stat-value" id="stats-hard-played">—</span><span class="stat-label">Played</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-hard-won">—</span><span class="stat-label">Won</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-hard-abandoned">—</span><span class="stat-label">Abandoned</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-hard-streak">—</span><span class="stat-label">Streak</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-hard-best-streak">—</span><span class="stat-label">Best streak</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-hard-hints">—</span><span class="stat-label">Hints</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-hard-mistakes">—</span><span class="stat-label">Mistakes</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-hard-best">—</span><span class="stat-label">Best time</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-hard-avg">—</span><span class="stat-label">Avg time</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-hard-worst">—</span><span class="stat-label">Worst time</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Expert -->
+    <div class="diff-card" data-diff="expert">
+      <div class="diff-card-header">
+        <span class="diff-dot expert"></span>
+        <span class="diff-card-name">Expert</span>
+        <span class="diff-card-summary" id="expert-summary">—</span>
+        <span class="diff-card-chevron">›</span>
+      </div>
+      <div class="diff-card-body">
+        <div class="diff-chips">
+          <div class="stat-chip"><span class="stat-value" id="stats-expert-played">—</span><span class="stat-label">Played</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-expert-won">—</span><span class="stat-label">Won</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-expert-abandoned">—</span><span class="stat-label">Abandoned</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-expert-streak">—</span><span class="stat-label">Streak</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-expert-best-streak">—</span><span class="stat-label">Best streak</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-expert-hints">—</span><span class="stat-label">Hints</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-expert-mistakes">—</span><span class="stat-label">Mistakes</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-expert-best">—</span><span class="stat-label">Best time</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-expert-avg">—</span><span class="stat-label">Avg time</span></div>
+          <div class="stat-chip"><span class="stat-value" id="stats-expert-worst">—</span><span class="stat-label">Worst time</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Global summary -->
+    <h3 class="stats-section-title" style="margin-top:20px">Overall</h3>
+    <div class="stats-global">
+      <div class="stat-chip"><span class="stat-value" id="stats-global-played">—</span><span class="stat-label">Played</span></div>
+      <div class="stat-chip"><span class="stat-value" id="stats-global-won">—</span><span class="stat-label">Won</span></div>
+      <div class="stat-chip"><span class="stat-value" id="stats-global-abandoned">—</span><span class="stat-label">Abandoned</span></div>
+      <div class="stat-chip"><span class="stat-value" id="stats-global-streak">—</span><span class="stat-label">Streak</span></div>
+      <div class="stat-chip"><span class="stat-value" id="stats-global-best-streak">—</span><span class="stat-label">Best streak</span></div>
+    </div>
+
+    <p class="stats-empty" id="statsEmpty">Play a game to see your stats here.</p>
 
   </div>
 

@@ -146,6 +146,15 @@ body {
   color: var(--ink);
 }
 
+/* locked by completed group — styled like given but with a subtle tint */
+.cell.locked {
+  font-family: var(--font-pencil);
+  font-weight: 700;
+  color: var(--grid-thick);
+  background: #E4EFE8;
+  cursor: default;
+}
+
 /* user-entered numbers, pencil style */
 .cell.entry {
   font-family: var(--font-pencil);
@@ -214,6 +223,12 @@ body {
   color: var(--text-muted);
   font-size: 16px;
 }
+.num-btn:disabled,
+.num-btn.num-complete {
+  opacity: 0.35;
+  cursor: default;
+  pointer-events: none;
+}
 
 /* ---------- Toolbar ---------- */
 .toolbar {
@@ -242,4 +257,219 @@ body {
   border-color: var(--accent);
   color: #fff;
 }
+.tool-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
 .tool-icon { font-size: 14px; }
+
+/* ---------- Group completion flash ---------- */
+@keyframes group-flash {
+  0%   { background-color: var(--surface); }
+  30%  { background-color: #A8D5B5; }
+  70%  { background-color: #A8D5B5; }
+  100% { background-color: var(--surface); }
+}
+
+.cell.group-complete {
+  animation: group-flash 0.7s ease forwards;
+  z-index: 1;
+}
+
+/* =========================================================
+   Stats sheet
+   ========================================================= */
+
+/* Semi-transparent backdrop */
+.stats-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(43, 58, 51, 0.45);
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.stats-backdrop.open {
+  display: block;
+  opacity: 1;
+}
+
+/* Slide-up sheet */
+.stats-sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 101;
+  background: var(--paper);
+  border-radius: 20px 20px 0 0;
+  padding: 0 16px 40px;
+  box-shadow: 0 -6px 32px rgba(43, 58, 51, 0.18);
+  max-height: 82vh;
+  overflow-y: auto;
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.stats-sheet.open {
+  transform: translateY(0);
+}
+
+/* Drag handle pill */
+.stats-handle {
+  width: 40px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--grid-thin);
+  margin: 12px auto 0;
+}
+
+/* Header row */
+.stats-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0 10px;
+}
+.stats-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+.stats-close {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  line-height: 1;
+}
+.stats-close:hover { background: var(--peer); }
+
+/* Section heading */
+.stats-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0 0 8px;
+}
+
+/* ---- Difficulty accordion cards ---- */
+.diff-card {
+  background: var(--surface);
+  border: 1px solid var(--grid-thin);
+  border-radius: 10px;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+
+.diff-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.diff-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.diff-dot.easy   { background: #52B788; }
+.diff-dot.medium { background: #F2A65A; }
+.diff-dot.hard   { background: #E07A5F; }
+.diff-dot.expert { background: #9B2335; }
+
+.diff-card-name {
+  font-weight: 700;
+  font-size: 14px;
+  flex: 1;
+}
+
+.diff-card-summary {
+  font-family: var(--font-print);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.diff-card-chevron {
+  font-size: 18px;
+  color: var(--text-muted);
+  transform: rotate(0deg);
+  transition: transform 0.2s ease;
+  line-height: 1;
+}
+.diff-card.open .diff-card-chevron {
+  transform: rotate(90deg);
+}
+
+/* Collapsible body */
+.diff-card-body {
+  display: none;
+  border-top: 1px solid var(--grid-thin);
+  padding: 12px 14px 14px;
+}
+.diff-card.open .diff-card-body {
+  display: block;
+}
+
+/* Chips inside a card — wrapping row */
+.diff-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ---- Stat chips (shared between cards and global row) ---- */
+.stat-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--paper);
+  border: 1px solid var(--grid-thin);
+  border-radius: 8px;
+  padding: 8px 12px;
+  min-width: 64px;
+}
+.stat-value {
+  font-family: var(--font-print);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--grid-thick);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 3px;
+  white-space: nowrap;
+}
+
+/* ---- Global summary row ---- */
+.stats-global {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.stats-global .stat-chip {
+  background: var(--surface);
+  flex: 1 1 auto;
+}
+
+/* Empty-state hint */
+.stats-empty {
+  display: none;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 13px;
+  margin-top: 16px;
+}
