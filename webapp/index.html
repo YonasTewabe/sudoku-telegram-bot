@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Sudoku</title>
+
+  <!-- Telegram Mini Apps SDK -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+
+    <header class="topbar">
+      <h1 class="title">Sudoku</h1>
+      <div class="status">
+        <span class="timer" id="timer">00:00</span>
+        <select id="difficulty" class="difficulty">
+          <option value="easy">Easy</option>
+          <option value="medium" selected>Medium</option>
+          <option value="hard">Hard</option>
+          <option value="expert">Expert</option>
+        </select>
+      </div>
+    </header>
+
+    <main class="board-wrap">
+      <div class="board" id="board" role="grid" aria-label="Sudoku board"></div>
+    </main>
+
+    <div class="message" id="message" aria-live="polite"></div>
+
+    <section class="numpad" id="numpad" aria-label="Number pad">
+      <button class="num-btn" data-num="1">1</button>
+      <button class="num-btn" data-num="2">2</button>
+      <button class="num-btn" data-num="3">3</button>
+      <button class="num-btn" data-num="4">4</button>
+      <button class="num-btn" data-num="5">5</button>
+      <button class="num-btn" data-num="6">6</button>
+      <button class="num-btn" data-num="7">7</button>
+      <button class="num-btn" data-num="8">8</button>
+      <button class="num-btn" data-num="9">9</button>
+      <button class="num-btn erase" data-num="0" aria-label="Erase">✕</button>
+    </section>
+
+    <footer class="toolbar">
+      <button class="tool-btn" id="notesBtn" aria-pressed="false">
+        <span class="tool-icon">✎</span> Notes
+      </button>
+      <button class="tool-btn" id="hintBtn">
+        <span class="tool-icon">★</span> Hint
+      </button>
+      <button class="tool-btn" id="newGameBtn">
+        <span class="tool-icon">↻</span> New game
+      </button>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
