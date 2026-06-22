@@ -76,7 +76,7 @@ For production, deploy to any host with HTTPS (Railway, Fly.io, Render, a VPS, e
 
 ### 4. Run the bot
 
-```bash 
+```bash
 python bot.py
 ```
 
