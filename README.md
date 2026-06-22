@@ -76,11 +76,11 @@ For production, deploy to any host with HTTPS (Railway, Fly.io, Render, a VPS, e
 
 ### 4. Run the bot
 
-```bash
+```bash 
 python bot.py
 ```
 
-### 5. Try it 
+### 5. Try it
 
 Open a chat with your bot in Telegram and send `/start`. Tap **"🧩 Play Sudoku"** to launch the Mini App, or use the persistent menu button next to the message input.
 
