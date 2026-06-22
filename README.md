@@ -90,7 +90,7 @@ All endpoints validate Telegram's `initData` signature before processing.
 
 | Method | Path | Description |
 |--------|------|-------------|
-| `GET` | `/api/stats?init_data=...` | Fetch full stats for the authenticated user |
+| `GET`  | `/api/stats?init_data=...` | Fetch full stats for the authenticated user |
 | `POST` | `/api/stats/game-start` | Record a new game started |
 | `POST` | `/api/stats/win` | Record a completed puzzle (time, hints, mistakes) |
 | `POST` | `/api/stats/abandon` | Record an abandoned game, resets current streak |
